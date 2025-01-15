@@ -60,7 +60,7 @@ def parse_config(config_file):
     HELPER_JSON_LOGGER = os.path.join(BASE_PATH, 'logging/agent/helper/log.py')
 
     # configure json logger
-    log = importlib.find_loader('log', HELPER_JSON_LOGGER)
+    log = importlib.import_module('log', HELPER_JSON_LOGGER)
     logger = log.init_logger(FILE_LOGS)
 
     RABBIT_PASSWORD = config['rabbitmq']['password']

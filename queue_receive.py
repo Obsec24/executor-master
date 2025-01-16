@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import importlib.util
 import pika
 import sys
 import functools
@@ -57,10 +58,10 @@ def parse_config(config_file):
     BASE_PATH = config['base']['base_path']
     assert os.path.isdir(BASE_PATH), 'directory %s not valid' % BASE_PATH
     FILE_LOGS = os.path.join(BASE_PATH, 'logging/log/executor.privapp.log')
-    HELPER_JSON_LOGGER = os.path.join(BASE_PATH, 'logging/agent/helper/log.py')
+    HELPER_JSON_LOGGER = os.path.join(BASE_PATH, 'logging-master/agent/helper/log.py')
 
     # configure json logger
-    log = importlib.import_module('log', HELPER_JSON_LOGGER)
+    log = importlib.util.spec_from_file_location("log", HELPER_JSON_LOGGER)
     logger = log.init_logger(FILE_LOGS)
 
     RABBIT_PASSWORD = config['rabbitmq']['password']

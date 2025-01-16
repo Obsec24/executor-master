@@ -62,7 +62,9 @@ def parse_config(config_file):
 
     # configure json logger
     log = importlib.util.spec_from_file_location("log", HELPER_JSON_LOGGER)
-    logger = log.init_logger(FILE_LOGS)
+    log_module = importlib.util.module_from_spec(log)
+    log.loader.exec_module(log_module)
+    logger = log_module.init_logger(FILE_LOGS)
 
     RABBIT_PASSWORD = config['rabbitmq']['password']
     RABBIT_USERNAME = config['rabbitmq']['username']

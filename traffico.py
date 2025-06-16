@@ -200,7 +200,7 @@ class Traffic:
 # TESTING
 # t = Traffic("192.168.1.201", "4000", "aee4ad920306", "/privapp/app/results/it/apks/app_376.apk", "Label_Tuning")
 def manualPhaseOne(app):
-    t = Traffic("192.168.1.202", "4002", "aee4ad920306", 'base.apk', "pinningtest", 1, app)
+    t = Traffic("172.31.162.44", "4002", "aee4ad920306", 'base.apk', "pinningtest", 1, app)
     #t = Traffic("192.168.1.202", "4003", "3d3799289906", 'base.apk', "pinningtest", 1, app)
     print(t.configure())
     print(t.upload())
@@ -213,7 +213,7 @@ def manualPhaseOne(app):
     print(t.sanitize())
 
 def manualPhaseTwo(app):
-    t = Traffic("192.168.1.201", "4002", "aee4ad920306", None, "test", 1, app)
+    t = Traffic("172.31.162.44", "4002", "aee4ad920306", None, "test", 1, app)
     #print(t.configure())
     #print(t.upload())
     print(t.configure2(app))
@@ -225,7 +225,7 @@ def manualPhaseTwo(app):
     #print(t.sanitize())
 
 def virtualtest(app):
-    t = Traffic("192.168.1.201", "400", "192.168.3.17", None, "virt_test ", 1, None)
+    t = Traffic("172.31.162.44", "400", "192.168.3.17", None, "virt_test ", 1, None)
     # print(t.configure())
     # print(t.upload())
     print(t.configure2(app))
